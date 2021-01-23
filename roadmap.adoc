@@ -1,0 +1,114 @@
+= Upgrade and Migration Roadmap
+Doc Writer <paul.lungu@camunda.com>
+v1.0, 2014-08-01
+:toc: right
+
+### Purpose
+
+- Upgrade Camunda 7.7 to Camunda 7.14
+- Migrate applications/processes into new databases.
+- Institute new architecture to make Camunda and other applications easier to manage and improve
+
+### Terms and Notes
+
+- *Trello* is used to manage the upgrade. The Trello board should be reviewed and pruned before the process is started.
+https://trello.com/b/qw63853g
+- *Migration* coping the database and purging use-cases/processes that are not needed
+- *Upgrade* moving from current Camunda version to latest viable version
+
+
+#### Logistics
+The migration process is broken into sections. Please read each section carefully and consider how it affects your use-case. It could be potentially useful to use Trello or another project management tool to build in flexibility into the migration process based on your project. To that end this document is an outline and framework to jump start the upgrade and migration and cannot account for every possible scenerio. Use the steps outlined below to organize and customize the migration process to your projects needs.
+
+- <<discuss, Discussion Items>> This is the first phase of the migration process and should help to plan for the potential scenerios specific to your applications upgrade and migration needs.
+- <<discuss, Prepare for Upgrade & Migration>> This section captures prepatory steps that should be done before the migration is executed
+- <<execute, Executing Upgrade & Migration>> Steps that should be done during the migration.
+- <<validate, Validating Upgrade & Migration>> Steps to validate the migration is successful
+-  <<copy, Final Selctive Copy of Data>> Other steps that can be useful but not necessarily needed or valid for every migration.
+- [[outcome]] <<Outcome>> The proposed outcome of the upgrade and migration
+
+### [[discuss]] Discussion Application/Project Specific Items
+- Long term history and audit solution
+** Look into data warehouse solution like Camunda Optimize or other
+- How much history do you need?
+** Identify retention policy
+** Consider that history will affect DB performance
+- New cockpit engine plugins, do you have forms or custom plugins?
+- Camunda Tasklist customizations, forms and JS, can be affected
+- Migrate all apps that will reside in the DB at the same time. This is potentially a cross team effort. It would make the migration potentially easier.
+- Consider the size of the database. Could copying be an issue? Could running SQL scripts be an issue?
+- How do process variables and other business data affect migration?
+- How do other integrations affect the migration? (UI, Legacy systems)
+- Purging strategy for workflows and history from Camunda
+- Do we need a security checklist?
+
+### [[prepare]] Steps to prepare for migration
+* [ ] Invite subject matter experts
+** Camunda Expert
+** Database expert
+** Dev Ops Expert
+** Application/Business Case/Domain Expert
+* [ ] Collect API, affected by migration
+* [ ] Create scripts to modify the history level
+* [ ] Collect process Id's from running instances to use for validation
+* [ ] Standup a Camunda 7.7 instance for testing database copy
+** With a job executor
+** Options to do validation steps
+** Option to do cleanup steps
+* [ ] Create and/or review process for cockpit batch history cleanup
+* [ ] Create and/or review process for cockpit batch running instance cleanup
+* [ ] Create and/or review process for deployment cleanup
+* [ ] Check upgrade guide to understand noteworthy changes.
+** Create an link:upgrade-addendum.adoc[upgrade addendum] based on upgrade guide to identify potential issues.
+** Review link:upgrade-addendum.adoc[upgrade addendum] to to identify and head off potential issues
+* Prepare upgrade script based on Camunda SQL upgrade scripts
+** Consolidate SQL commands
+** Or break up commands based on tables so they can be run in parallel
+* [ ] Standup a Camunda 7.14 instance for testing upgraded database
+** With a job executor
+** Do validation steps
+** Do cleanup steps
+
+### [[execute]] Upgrade and Migration Steps
+* [ ] Standup temp database for migration and upgrade work
+* [ ] Pause new workflow starts in Canunda Cockpit
+* [ ] BDA Copy/Backup the database into temp database using SQL server tools
+* [ ] Run Camunda 7.7 on the temp database
+* [ ] Validate the copy to the temp database was successful in Cockpit (see validation steps)
+* [ ] Run the Canunda upgrade scripts against the temp database
+* [ ] Upgrade Camunda spring-boot applications  libraries and move to Camunda EE
+* [ ] Validate migration
+
+### [[validate]] Validate the migrtion and upgrade
+* [ ] Run postman scripts against affected API's
+* [ ] Start process instances
+* [ ] Continue process instances based on saved PID's
+
+### [[cleanup]] Cleanup Database
+* [ ] Delete Running processes in batch
+* [ ] Delete Deployments manually in Cockpit UI
+* [ ] Delete History in batch
+* [ ] Run modify history level script
+* [ ] Selectively copy Temp data to Permanent database
+
+### [[copy]] Selectively Copy Data to Final DB
+* [ ] Select the tables that need to be migrated
+* [ ] Execute the data copy
+* [ ] Validate the copy
+
+### [[outcome]] Outcome of migration
+- Application 1 migrated
+- Application 2 migrated
+- Application 3 migrated
+
+
+
+
+
+
+
+
+
+
+
+

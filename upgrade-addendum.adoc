@@ -1,0 +1,81 @@
+= Upgrade Addendum
+Doc Writer <paul.lungu@camunda.com>
+v1.0, 2021-01-22
+:toc: right
+
+
+=== Check the migration guide
+
+Review EVERY intermediate minor version to understand all noteworthy changes in behavior
+https://docs.camunda.org/manual/7.14/update/minor/
+
+
+=== API changes
+- Identify changes that affect Serialization and Custom code
+
+https://docs.camunda.org/manual/7.14/update/minor/78-to-79/#java-serialized-objects
+
+ - setting "serializationDataFormat": "application/x-java-serialized-object" is forbidden
+
+https://docs.camunda.org/manual/7.14/update/minor/78-to-79/#jackson-version-update
+
+- Jackson version in Spin project was updated from version 2.6.3 to 2.9.5, but Spin is still compatible with older version (2.6.3).
+
+https://docs.camunda.org/manual/7.14/update/minor/79-to-710/#spin-and-jaxb
+
+- Since Java 9, the previously included module “JAXB” was marked as deprecated and with Java 11 the module was removed entirely from the JDK
+
+https://docs.camunda.org/manual/7.14/update/minor/711-to-712/#camunda-commons-typed-values-migration
+
+- The library isn’t part of the camunda-commons-bom anymore. Now, it is directly part of the camunda-bom. Users that are importing the camunda-commons-bom now need to either replace the import with the camunda-bom, or, explicitly declare the library version as described above.
+
+
+=== Security Considerations
+- CSRF Prevention Added
+https://docs.camunda.org/manual/7.14/update/minor/79-to-710/#csrf-prevention-in-the-webapps
+ ** This release secures the Webapps with CSRF Prevention. If you want to make use of the newly introduced security enhancement, please make sure to enable the CsrfPreventionFilter when migrating to 7.10 by adjusting the web.xml file of Camunda BPM Webapps.
+
+- Whitelist users and groups
+https://docs.camunda.org/manual/7.14/update/minor/79-to-710/#whitelist-pattern-for-user-group-and-tenant-ids
+** With Camunda BPM 7.10 a whitelist pattern of User, Group and Tenant IDs has been introduced. By default, on creating or updating users, groups or tenants the ID is matched against the pattern “[a-zA-Z0-9]+|camunda-admin”.
+
+- Custom permissions
+https://docs.camunda.org/manual/7.14/update/minor/710-to-711/#changes-affecting-custom-permissions-resources
+
+- Added XSS protection header in webapps
+https://docs.camunda.org/manual/7.14/update/minor/710-to-711/#http-header-security-in-webapps
+With Camunda BPM 7.11.0 we have added the XSS Protection Header to all server responses in conjunction with the Webapps.
+
+=== Java JDK Changes
+
+=== Tasklist Changes
+- Customization issues with Jquery
+https://docs.camunda.org/manual/7.14/update/minor/713-to-714/#update-to-jquery-3-5
+- New front end libs
+https://docs.camunda.org/manual/7.14/update/minor/710-to-711/#updated-front-end-libraries
+
+=== Camunda Engine Changes
+- New Engine Property
+https://docs.camunda.org/manual/7.14/update/minor/713-to-714/#new-process-engine-property
+** This minor release introduces a new process engine property - camunda.installation.id.
+
+- User Operations Log
+https://docs.camunda.org/manual/7.14/update/minor/710-to-711/#user-operation-log-permissions
+** The authorization for user operation log entries has been adjusted.
+
+- Camunda Connect
+https://docs.camunda.org/manual/7.14/update/minor/713-to-714/#new-engine-dependency-connect
+** Camunda Connect dependency has been added to the process engine (camunda-engine) artifact, allowing usage of simple connectors in the context of the new telemetry feature.
+
+==== Metrics reporter changes
+
+==== Deployment Aware changes
+
+- async before historical varilable changes
+https://docs.camunda.org/manual/7.14/update/minor/712-to-713/#historic-process-instance-variables-on-asynchronous-instantiation
+
+=== History Changes
+- History cleanup has changed dramatically
+- History cleanup *removal-time* based feature added
+** Check history cleanup configuration make sure it works with the new history cleanup features
+** End Time cleanup is viable for upgraded camunda
