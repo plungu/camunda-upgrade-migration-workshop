@@ -34,22 +34,24 @@ IMPORTANT: A proper scoping is key and very important to the outcome of the work
 
 NOTE: The consultant time will likely be blocked for a period while the workshop is being coordinated to help in the scheduling of the workshop.
 
+NOTE: Consulting Engagement Report should be filled out as part of the workshop scoping and delivery process.
+
 What does a proper scoping look like.
 
 - Try to remove as much ambiguity as possible
 - Clearly identify the goals of the workshop
 - Use multiple scoping sessions. Don't be afraid to do multiple scoping
 - Set expectations. Camunda does not deliver production migrations and upgrades
-- Do not commit to timelines until scoping is complete
+- Do not commit to time estimate until scoping is complete
 - Be flexible. Things can change during a workshop and misunderstandings can still happen
 - Make sure the customer takes the time to prepare environments for the workshop. This may be done before the workshop starts.
 - Make sure the customer has access to the right technical resources during the workshop. Often a database admin is needed for short periods during the workshop.
 
 == Workshop Logistics
-- Once the scoping is complete make sure to let the CSM or AE and Technical Organizer know so they can start the consulting delivery process.
+
+- Once the scoping is complete make sure to let the CSM or AE and Technical Coordinator know so they can start the consulting delivery process. If possible include the Technical Coordinator in the scoping calls.
 - Communicate the time estimate for the workshop
 - Confirm your availability for the workshop
-- Make sure the consulting process has started
 - Once you receive a task from the Consulting Delivery Process send out Calendar Invites to the customer.
 - Be sure to communicate any preparation the customer must do based on the scoping requirements for the workshop
 
@@ -57,11 +59,12 @@ What does a proper scoping look like.
 
 IMPORTANT: Deliverables for the migration workshop are focused on enabling the participants to create a plan that will allow the stakeholders to include a migration and upgrade of Camunda into a potentially complex product delivery pipeline. Customers will often not be able to migrate and upgrade all Camunda instances in one shot. So it's necessary to provide the knowledge and collateral enabling them to crate a flexible strategy to work on a potential migration and upgrade in a piecemeal approach.
 
-- Roadmap to migrate and upgarde Camunda
+- Roadmap to migrate and upgrade Camunda
 - Project management strategy
 - Technical documentation to accompany the migration and upgrade
 - Example migrated environment based on hands on experience from workshop
 - Knowledge transfer
+- Consulting Engagement Report
 
 == Organizing and Delivering Workshop
 
