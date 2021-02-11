@@ -1,0 +1,75 @@
+= Upgrade and Migration Guide
+Doc Writer <paul.lungu@camunda.com>
+v1.0, 2021-02-10
+:toc: right
+
+== Purpose
+To help consultant plan and deliver an Upgrade and Migration Workshop
+
+== Summary
+Upgrades and Migrations are often combined into one workshop and it makes sense that an upgrade is combined with some other technical activities. So the term Migration is a loose way to say some other important stuff that needs to happen along with an upgrade.
+
+=== The most common types of migrations are
+
+- Architecture
+- Data
+- Combination of data and architecture
+- API's and Legacy integrations
+
+=== Architecture
+This is potentially a diverse set of circumstances that can include changes to workflow design, scaling, CI/CD, co-locating workflow, API's.
+
+=== Data
+Large amounts of data that is associated to workflows but not necessarily in the Camunda database. Examples would be Process meta-data and or Business Entities that are used in conjunction with a workflow. This auxiliary data must be kept in sync with the existing workflows.
+
+=== Both
+An architecture change is part of the workshop and data needs to be migrated as well.
+
+=== Api's and Legacy Integrations
+Migration and Upgrades of Camunda can affect how Camunda interacts with other systems. It's important to account for this eventuality.
+
+== Scoping
+
+IMPORTANT: A proper scoping is key and very important to the outcome of the workshop. Do not commit to a time estimate until the scoping is complete.
+
+NOTE: The consultant time will likely be blocked for a period while the workshop is being coordinated to help in the scheduling of the workshop.
+
+What does a proper scoping look like.
+
+- Try to remove as much ambiguity as possible
+- Clearly identify the goals of the workshop
+- Use multiple scoping sessions. Don't be afraid to do multiple scoping
+- Set expectations. Camunda does not deliver production migrations and upgrades
+- Do not commit to timelines until scoping is complete
+- Be flexible. Things can change during a workshop and misunderstandings can still happen
+- Make sure the customer takes the time to prepare environments for the workshop. This may be done before the workshop starts.
+- Make sure the customer has access to the right technical resources during the workshop. Often a database admin is needed for short periods during the workshop.
+
+== Workshop Logistics
+- Once the scoping is complete make sure to let the CSM or AE and Technical Organizer know so they can start the consulting delivery process.
+- Communicate the time estimate for the workshop
+- Confirm your availability for the workshop
+- Make sure the consulting process has started
+- Once you receive a task from the Consulting Delivery Process send out Calendar Invites to the customer.
+- Be sure to communicate any preparation the customer must do based on the scoping requirements for the workshop
+
+== Deliverables
+
+IMPORTANT: Deliverables for the migration workshop are focused on enabling the participants to create a plan that will allow the stakeholders to include a migration and upgrade of Camunda into a potentially complex product delivery pipeline. Customers will often not be able to migrate and upgrade all Camunda instances in one shot. So it's necessary to provide the knowledge and collateral enabling them to crate a flexible strategy to work on a potential migration and upgrade in a piecemeal approach.
+
+- Roadmap to migrate and upgarde Camunda
+- Project management strategy
+- Technical documentation to accompany the migration and upgrade
+- Example migrated environment based on hands on experience from workshop
+- Knowledge transfer
+
+== Organizing and Delivering Workshop
+
+IMPORTANT: Organizing the workshop may be a combination of activities done before the workshop starts and on the first day. Plan this into your workshop scoping and logistics.
+
+- Use Trello or another project management tool to create a backlog of tasks based on the workshop goals set out in the scoping. See example https://trello.com/b/qw63853g/thrivent-workshop[Thrivent Migration and Upgrade Trello Board] This can likely be used as a framework for the project management strategy deliverable.
+- Prepare necessary environments to execute a hands on migration and upgrade if this is scoped into the workshop. Be sure to prepare customer ahead of time if needed.
+- Build Roadmap document. Use a documentation tool like AsciiDoc to provide a clear Roadmap document outlining and detailing the migration and upgrade process and strategy. See the link:./roadmap.adoc[Roadmap Doc] for example.
+- Build technical document(s) as addendum to Roadmap. See the link:./upgrade-addendum.adoc[Addendum Doc] for example.
+- Go through the hands-on process with the customer based on the Trello backlog you created. This should include knoledge transfer tasks. It's good to document in Trello as you go and then it's easy to transfer to official documentation.
+- Go through the documentation with the customer as final walk through of the workshop to confirm deliverables with customer.
